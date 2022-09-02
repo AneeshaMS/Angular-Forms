@@ -1,0 +1,109 @@
+
+<div class="reactive">
+
+    <h1 style="text-align:center; color:white">Reactive Form In Angular</h1>
+
+    <div class="container">
+
+<form class="reactive-form" [formGroup]="signUp" (submit)="onSignUp()">
+    <!-- username -->
+    <div class="mb-3">
+        <label for="exampleInputName" class="form-label">UserName</label>
+        <input 
+            type="email" 
+            class="form-control" 
+            id="exampleInputName"
+            formControlName="username"
+        >
+      </div>
+      <!-- username validation -->
+      <div *ngIf="!signUp.get('username').valid && signUp.get('username').touched">
+        <small>username is required</small>
+      </div>
+
+      <!-- email -->
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input 
+            type="email" 
+            class="form-control" 
+            id="exampleInputEmail"
+            formControlName="email"
+            [ngClass]="{'is-invalid' : (isFormSubmitted && signUp.get('email').errors) || (signUp.get('email').pristine && signUp.get('email').invalid)}"
+        >
+      </div>
+
+      <!-- email validation -->
+      
+
+      <!-- phone -->
+      <div class="mb-3">
+        <label for="exampleInputPhone" class="form-label">Phone Number</label>
+        <input 
+            type="email" 
+            class="form-control" 
+            id="exampleInputPhone"
+            formControlName="phone"
+        >
+      </div>
+
+      <!-- phone validation -->
+      <div *ngIf="!signUp.get('phone').valid && signUp.get('phone').touched">
+        <small>Phone is required</small>
+      </div>
+
+      <!-- password -->
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input 
+        type="password" 
+        class="form-control" 
+        id="exampleInputPassword1"
+        formControlName="pass"
+    >
+    </div>
+
+    <!--  Password validation -->
+    <div *ngIf="!signUp.get('pass').valid && signUp.get('pass').touched">
+        <small>Password is required</small>
+      </div>
+
+    <!-- confirm password -->
+    <div class="mb-3">
+        <label for="exampleInputConfirm" class="form-label">Password</label>
+        <input 
+            type="password" 
+            class="form-control" 
+            id="exampleInputConfirm"
+            formControlName="cpass"
+        >
+      </div>
+
+      <!-- Confirm Password validation -->
+      <div *ngIf="!signUp.get('cpass').valid && signUp.get('cpass').touched">
+        <small>Confirm Password is required</small>
+      </div>
+
+      <!-- checkbox -->
+    <div class="mb-3 form-check">
+      <input 
+        type="checkbox" 
+        class="form-check-input" 
+        id="exampleCheck1"
+        formControlName="check"
+    >
+      <label class="form-check-label" for="exampleCheck1">Agree Terms and conditions</label>
+    </div>
+
+    <!-- checkbox validation -->
+    <div *ngIf="!signUp.get('check').valid && signUp.get('check').touched">
+        <small>Accept terms and conditions</small>
+      </div>
+
+    <!-- button -->
+    <button type="submit" class="btn btn-primary">SignUp</button>
+    <button type="reset" class="btn btn-danger">Reset</button>
+  </form>
+
+</div>
+</div>

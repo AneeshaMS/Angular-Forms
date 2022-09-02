@@ -1,0 +1,35 @@
+
+.template{
+    background:url(/../assets/bg1.avif);
+    background-size: cover;
+    background-attachment: fixed;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.template-form{
+    width: 400px;
+    margin-top: 50px;
+    background: rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 20px;
+    color: aliceblue;
+   margin-bottom: 20px;
+}
+
+.error-msg{
+    color: whitesmoke;
+    background: rgba(255, 1, 1, 0.3);
+    font-size: smaller;
+}
+.btn{
+    display:inline;
+    width: 47.5%;
+    text-align: center;
+}
+.btn.btn-danger{
+    padding-left: 10px;
+}

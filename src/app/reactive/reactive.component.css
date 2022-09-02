@@ -1,0 +1,42 @@
+
+.reactive{
+    background:url(/../assets/bg1.avif);
+    background-size: cover;
+    background-attachment: fixed;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.reactive-form{
+    width: 400px;
+    margin-top: 50px;
+    background: rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 20px;
+    color: aliceblue;
+    margin-bottom: 20px;
+}
+
+.error-msg{
+    color: whitesmoke;
+    background: rgba(255, 1, 1, 0.3);
+    font-size: smaller;
+}
+.btn{
+    display:inline;
+    width: 47.5%;
+    text-align: center;
+}
+.btn.btn-danger{
+    padding-left: 10px;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+input.ng-valid{
+    border:1px solid green
+}

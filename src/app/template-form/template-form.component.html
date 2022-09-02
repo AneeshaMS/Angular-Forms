@@ -1,0 +1,145 @@
+<!-- template driven form HTML5 validation -->
+
+<div class="template">
+
+
+
+<h1 style="text-align:center; color:white">Template Driven Form In Angular</h1>
+
+<div class="container">
+
+<form 
+    class="template-form" 
+    name="form" 
+    #loginForm="ngForm" 
+    (ngSubmit)="loginForm.valid && submitForm(loginForm)" 
+>
+
+<!-- username -->
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">UserName</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="exampleInputName" 
+            [(ngModel)]="user.username"
+             name="username"
+              #username="ngModel"
+               required 
+               minlength="5" 
+               maxlength="10">
+      </div>
+<!-- username validation -->
+      <div class="error-msg" 
+        *ngIf="(username.touched || loginForm.submitted) && (username.errors?.['required'])">
+        username is required
+      </div>
+
+      <!-- email -->
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input 
+        type="email" 
+        class="form-control" 
+        id="exampleInputEmail1" 
+        [(ngModel)]="user.email" 
+        name="email" 
+        #email="ngModel" 
+        required
+    >
+    </div>
+    <!-- email valiadtion -->
+    <div class="error-msg" *ngIf="(email.touched || loginForm.submitted) && (email.errors?.['required'])">
+        Email is required
+      </div>
+
+      <!-- phone number -->
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Phone Number</label>
+        <input 
+            type="tel" 
+            class="form-control" 
+            id="exampleInputPhone" 
+            [(ngModel)]="user.phone"
+             name="phone" 
+             #phone="ngModel"
+              required
+            >
+      </div>
+      <!-- phone number valiadtion -->
+      <div class="error-msg" *ngIf="(phone.touched || loginForm.submitted) && (phone.errors?.['required'])">
+        Phone is required
+      </div>
+
+      <!-- password -->
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input 
+        type="password" 
+        class="form-control" 
+        id="exampleInputPassword1" 
+        [(ngModel)]="user.pass" 
+        name="pass"
+         #pass="ngModel" 
+         required
+       minlength="8" 
+    >
+    </div>
+    <!-- password validation -->
+    <div class="error-msg" *ngIf="(pass.touched || loginForm.submitted) && (pass.errors?.['required'])">
+        Password is required
+      </div>
+      <div class="error-msg" *ngIf="(pass.touched || loginForm.submitted) && (pass.errors?.['minlength'])">
+        Password should contain 8 characters
+      </div>
+
+
+      <!-- confirm password -->
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Confirm Password</label>
+        <input 
+            type="password" 
+            class="form-control" 
+            id="exampleInputConfirm" 
+            [(ngModel)]="user.cpass" 
+            name="cpass" 
+            #cpass="ngModel" 
+            required
+        >
+      </div>
+
+      <!-- confirm password validation -->
+      <div class="error-msg" *ngIf="(cpass.touched || loginForm.submitted) && (cpass.errors?.['required'])">
+        confirm Password is required
+      </div>
+      <div class="error-msg"
+       *ngIf="(cpass.touched || loginForm.submitted) && (user.cpass !== user.pass)">
+         confirm password doesnot match
+        </div>
+
+        <!-- checkbox -->
+    <div class="mb-3 form-check">
+      <input 
+        type="checkbox" 
+        class="form-check-input" 
+        id="exampleCheck1"
+        [(ngModel)]="user.check" 
+        #check="ngModel" 
+        name="check" 
+        required
+    >
+      <label class="form-check-label" for="exampleCheck1">Agree terms and condition</label>
+    </div>
+    <!-- checkbox validation -->
+    <div class="error-msg"  style="margin-bottom:15px"
+    *ngIf="(check.touched || loginForm.submitted) && (check.errors?.['required'])">
+        accept terms and conditions
+      </div>
+
+      <!-- buttons -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="reset" class="btn btn-danger">Reset</button>
+  </form>
+</div>
+
+</div>

@@ -1,0 +1,108 @@
+
+<h1 style="text-align:center;">Reactive Form Validation</h1>
+
+<div class="container">
+
+<form class="reactive-form" [formGroup]="signIn" >
+
+
+  <!-- to group form controls (name to phone) -->
+<div formGroupName="personalDetails"> 
+
+
+    <!-- username -->
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">UserName</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="exampleInputName"
+            formControlName="username"
+        >
+      </div>
+      <!-- <div *ngIf="signIn.get(' personalDetails.Username').errors?.['nonSpaceAllowed']">
+        <small style="color:red">name should not contains space</small>
+      </div> -->
+<!-- Email -->
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input    
+        type="email" 
+        class="form-control" 
+        id="exampleInputEmail1"
+        formControlName="email"
+    >
+    </div>
+
+    <div *ngIf="(signIn.get('personalDetails.email').invalid) && (signIn.get('personalDetails.email').touched)">
+      <span style="color:red">email is not valid</span>
+    </div>
+    <!-- phone number -->
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Phone Number</label>
+        <input 
+            type="tel" 
+            class="form-control" 
+            id="exampleInputPhone"
+            formControlName="phone"
+        >
+      </div>
+    </div>
+
+    <!-- skillss -->
+    <div formArray="skills">
+      <!-- loop over array -->
+      <ng-container *ngFor="let skill of skills.controls; index as i">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Skills</label>
+      <input 
+          type="tel" 
+          class="form-control"
+         formControlName="skills.controls[i]"
+          ngDefaultControl 
+      >
+    </div>
+  </ng-container>
+  </div>
+  <button (click)="addSkills()">+ Add Skills</button>
+
+
+      <!-- password -->
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input 
+        type="password" 
+        class="form-control" 
+        id="exampleInputPassword1"
+        formControlName="pass"
+    >
+    </div>
+    <!-- confirm password -->
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+        <input 
+            type="password" 
+            class="form-control" 
+            id="exampleInputConfirmPassword"
+            formControlName="cpass"
+        >
+      </div>
+      <!-- checkbox -->
+    <div class="mb-3 form-check">
+      <input 
+        type="checkbox" 
+        class="form-check-input" 
+        id="exampleCheck1"
+        formControlName="check"
+    >
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <!-- button -->
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+    &nbsp;
+    <button type="reset" class="btn btn-danger">Reset</button>
+    &nbsp;
+    <button class="btn btn-warning" (click)="Update()">Update</button>
+  </form>
+
+</div>
